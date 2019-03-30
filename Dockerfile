@@ -24,8 +24,7 @@ RUN rm -Rf /tmp/* /var/cache/apk/*
 COPY /assets/supervisord.conf /etc/supervisord.conf
 
 # Openbox window manager
-COPY assets/openbox/menu.xml /etc/xdg/openbox/menu.xml
-
+COPY assets/menu.xml /etc/xdg/openbox/menu.xml
 
 EXPOSE 5900
 
