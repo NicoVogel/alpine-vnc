@@ -6,7 +6,7 @@ RUN apk -U update \
     && apk add librdkafka --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 # install VNC & the desktop system
-RUN apk add --no-cache x11vnc xvfb openbox xfce4-terminal
+RUN apk add --no-cache x11vnc xvfb openbox xterm
 
 # set up support for supervisord & our core users
 RUN \
@@ -20,9 +20,12 @@ RUN \
 # clean-up
 RUN rm -Rf /tmp/* /var/cache/apk/*
 
-# service configuration
-ADD /etc/supervisord.conf /etc/supervisord.conf
-ADD /etc/conf.d/* /etc/supervisor/conf.d/
+# Configure init
+COPY /assets/supervisord.conf /etc/supervisord.conf
+
+# Openbox window manager
+COPY assets/openbox/menu.xml /etc/xdg/openbox/menu.xml
+
 
 EXPOSE 5900
 
