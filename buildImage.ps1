@@ -1,1 +1,1 @@
-docker build -t alpine-vnc .
+docker build -t birddock/alpine-vnc .
