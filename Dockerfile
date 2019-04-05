@@ -1,12 +1,9 @@
 FROM alpine:latest
 
-# add newest librarys and update 
 # install VNC & the desktop system
-RUN apk -U update && \
-    apk add --no-cache x11vnc xvfb openbox xterm
-
 # set up support for supervisord & our core users
-RUN \
+RUN apk -U update && \
+    apk add --no-cache x11vnc xvfb openbox xterm\
     apk add supervisor sudo && \
     addgroup alpine && \
     adduser -G alpine -s /bin/sh -D alpine && \
