@@ -3,8 +3,7 @@ FROM alpine:latest
 # install VNC & the desktop system
 # set up support for supervisord & our core users
 RUN apk -U update && \
-    apk add --no-cache x11vnc xvfb openbox xterm\
-    apk add supervisor sudo && \
+    apk add --no-cache x11vnc xvfb openbox xterm supervisor sudo && \
     addgroup alpine && \
     adduser -G alpine -s /bin/sh -D alpine && \
     echo "alpine:alpine" | /usr/sbin/chpasswd && \
